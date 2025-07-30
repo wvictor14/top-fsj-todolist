@@ -6,9 +6,22 @@ export class todoItem {
     this._priority = priority;
     this._notes = notes;
   }
+  get title() {
+    return this._title;
+  }
+  get description() {
+    return this._description;
+  }
   get dueDate() {
     return this._dueDate;
   }
+  get priority() {
+    return this._priority;
+  }
+  get notes() {
+    return this._notes;
+  }
+
 }
 
 export class project {
