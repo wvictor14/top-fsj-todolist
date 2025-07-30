@@ -45,3 +45,13 @@ let current_project = projects[0];
 // target the .lists div and populate with project -> todo_items
 setTitle(current_project);
 current_project.items.map(addTodo);
+
+//todo add form to enter todo item
+// on submit, add the item to current project
+// run addTodo on new item
+
+//todo add form to enter new project
+
+//todo add ability to switch projects
+
+//todo add delete capabilities to todo item and project
