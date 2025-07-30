@@ -1,0 +1,13 @@
+@import url(reset.css);
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+.main {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+}
+.sidebar > h1 {
+  text-align: center;
+}
+.content > h1 {
+  text-align: center;
+}
