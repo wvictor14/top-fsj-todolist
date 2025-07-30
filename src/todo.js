@@ -13,8 +13,16 @@ export class todo_item {
 
 export class project {
   constructor(title, items) {
-    this.title = title;
-    this.items = items;
+    this._title = title;
+    this._items = items;
+  }
+
+  get title() {
+    return this._title;
+  }
+
+  get items() {
+    return this._items;
   }
 
 }
