@@ -12,6 +12,12 @@ export function addProject(project) {
 
 }
 
+// sets the title of the content page based on given project
+export function setTitle(project){
+  const target = document.getElementById("content-title");
+  target.textContent = project.title;
+}
+
 export function addTodo(todo) {
 // parent div
   const parent = document.querySelector(".lists");

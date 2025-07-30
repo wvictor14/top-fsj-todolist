@@ -1,6 +1,6 @@
 import "./styles.css";
 import { todoItem, project} from "./todo.js";
-import { addProject, addTodo } from "./dom.js"
+import { addProject, addTodo, setTitle} from "./dom.js"
 
 let new_item = new todoItem('Buy Groceries', 'Buy some food', 'Tomorrow', 'High', 'no notes');
 
@@ -40,7 +40,8 @@ projects.map((currentValue, index, array) => {
 })
 
 // establish current project
-let current_project = default_project;
+let current_project = projects[0];
 
 // target the .lists div and populate with project -> todo_items
+setTitle(current_project);
 current_project.items.map(addTodo);
