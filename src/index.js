@@ -1,13 +1,14 @@
 import "./styles.css";
-import { todo_item, project} from "./todo.js";
+import { todoItem, project} from "./todo.js";
+import { addProject } from "./dom.js"
 
-let new_item = new todo_item('Buy Groceries', 'Buy some food', 'Tomorrow', 'High', 'no notes');
+let new_item = new todoItem('Buy Groceries', 'Buy some food', 'Tomorrow', 'High', 'no notes');
 console.log(new_item.dueDate);
 
 let default_project = new project(
   'Default', 
   [new_item,
-    new todo_item('Call mom', 'using landline', 'Soon', 'medium')
+    new todoItem('Call mom', 'using landline', 'Soon', 'medium')
 
   ]
 );
