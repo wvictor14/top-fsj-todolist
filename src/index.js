@@ -14,5 +14,7 @@ let default_project = new project(
 );
 console.log(default_project);
 
+addProject(default_project);
+
 // target the .projects and populate with project title
 // target the .lists div and populate with project -> todo_items
