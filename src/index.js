@@ -1,5 +1,5 @@
 import "./styles.css";
-import { todo_item, project} from "./todo_item.js";
+import { todo_item, project} from "./todo.js";
 
 let new_item = new todo_item('Buy Groceries', 'Buy some food', 'Tomorrow', 'High', 'no notes');
 console.log(new_item.dueDate);
@@ -12,3 +12,6 @@ let default_project = new project(
   ]
 );
 console.log(default_project);
+
+// target the .projects and populate with project title
+// target the .lists div and populate with project -> todo_items
