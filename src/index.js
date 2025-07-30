@@ -6,18 +6,41 @@ let new_item = new todoItem('Buy Groceries', 'Buy some food', 'Tomorrow', 'High'
 
 let default_project = new project(
   'Default', 
-  [new_item,
+  [
+    new_item,
     new todoItem('Call mom', 'using landline', 'Soon', 'medium')
-
   ]
 );
-// console.log(default_project);
 
-addProject(default_project);
-// console.log(default_project.items);
-
-default_project.items.map(addTodo);
-
+let projects = [
+  default_project,
+  new project(
+    'Work',
+    [
+      new todoItem(
+        'Schedule Vacation', 
+        'Schedule it for the long weekend', 
+        'Today', 
+        'Low'
+      ),
+      new todoItem(
+        'Finish ML project', 
+        'Do it fast', 
+        'EOY', 
+        'High', 
+        "Don't worry about the other project for now"
+      )
+    ]
+  )
+];
 
 // target the .projects and populate with project title
+projects.map((currentValue, index, array) => {
+  addProject(currentValue)
+})
+
+// establish current project
+let current_project = default_project;
+
 // target the .lists div and populate with project -> todo_items
+current_project.items.map(addTodo);
