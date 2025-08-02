@@ -18,6 +18,10 @@ export function setTitle(project){
   target.textContent = project.title;
 }
 
+export function clearTodo() {
+  document.querySelector(".lists").innerHTML = '';
+}
+
 export function addTodo(todo) {
 // parent div
   const parent = document.querySelector(".lists");
