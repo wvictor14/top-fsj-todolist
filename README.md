@@ -1,5 +1,12 @@
 https://www.theodinproject.com/lessons/node-path-javascript-todo-list
 
+# commands
+
+setup with `sh https://raw.githubusercontent.com/wvictor14/learnjs/refs/heads/main/making-a-javascript-project/setup-node-project.sh`
+
+start webpack
+`npx webpack serve`
+
 
 ### [Assignment](https://www.theodinproject.com/lessons/node-path-javascript-todo-list#assignment)
 
