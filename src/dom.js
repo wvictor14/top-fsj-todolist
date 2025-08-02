@@ -1,6 +1,6 @@
 // this module is for populating the dom
 
-export function addProject(project) {
+export function addProjectToSidebar(project) {
   // parent div
   const parent = document.querySelector(".projects");
 
@@ -13,16 +13,16 @@ export function addProject(project) {
 }
 
 // sets the title of the content page based on given project
-export function setTitle(project){
+export function setTitleOfMain(project){
   const target = document.getElementById("content-title");
   target.textContent = project.title;
 }
 
-export function clearTodo() {
+export function clearTodoUI() {
   document.querySelector(".lists").innerHTML = '';
 }
 
-export function addTodo(todo) {
+export function addTodoUI(todo) {
 // parent div
   const parent = document.querySelector(".lists");
 
