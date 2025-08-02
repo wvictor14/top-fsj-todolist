@@ -1,6 +1,6 @@
 import "./styles.css";
-import { todoItem, project} from "./todo.js";
-import { addProject, addTodo, setTitle} from "./dom.js"
+import { todoItem, project, switchProject} from "./todo.js";
+import { addProject, addTodo, clearTodo, setTitle} from "./dom.js"
 
 let new_item = new todoItem('Buy Groceries', 'Buy some food', 'Tomorrow', 'High', 'no notes');
 
@@ -53,5 +53,10 @@ current_project.items.map(addTodo);
 //todo add form to enter new project
 
 //todo add ability to switch projects
+/// switches project, clears todo, changes title, populates todo
+current_project = switchProject(projects, 'Work');
+clearTodo();
+setTitle(current_project);
+current_project.items.map(addTodo);
 
 //todo add delete capabilities to todo item and project
