@@ -39,3 +39,9 @@ export class project {
   }
 
 }
+
+export function switchProject(projects, title) {
+  // code that returns project with title == title
+  return projects.find(project => project.title == title)
+  
+}
