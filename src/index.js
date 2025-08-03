@@ -7,7 +7,10 @@ import { initialize } from "./initialize.js"
 let projects = initialize();
 
 let current_project = projects[0];
-addProjectsToSidebar(projects);
+addProjectsToSidebar(projects, (clicked_project) => {
+  current_project = clicked_project;
+  addTodoContent(current_project);
+});
 addTodoContent(current_project);
 
 //todo add form to enter todo item
@@ -18,7 +21,7 @@ addTodoContent(current_project);
 
 //todo add ability to switch projects
 /// switches project, clears todo, changes title, populates todo
-current_project = switchProject(projects, 'Work');
+switchProject(projects[1]);
 clearTodoUI();
 setTitleOfMain(current_project);
 current_project.items.map(addTodoUI);

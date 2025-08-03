@@ -40,9 +40,9 @@ export class project {
 
 }
 
-export function switchProject(projects, title) {
-  // code that returns project with title == title
-  return projects.find(project => project.title == title)
+export function switchProject(project) {
+  current_project = project;
+  console.log('Current project is now: ', current_project.title)
   
 }
 

@@ -1,11 +1,17 @@
 // this module is for populating the dom
-export function addProjectsToSidebar(projects) {
+
+// addProjectsToSidebar populates sidebar with each project in projects
+// onSelect is a "callback function" that allows us to modify the global state
+// without defining the global state in this module, respecting encapsulation. 
+export function addProjectsToSidebar(projects, onSelect) {
   projects.map((currentValue, index, array) => {
-    addProjectToSidebar(currentValue)
+    addProjectToSidebar(currentValue, onSelect)
   })
 }
 
-function addProjectToSidebar(project, current_project) {
+// onSelect is a function
+// project is a project object
+function addProjectToSidebar(project, onSelect) {
   // parent div
   const parent = document.querySelector(".projects");
 
@@ -18,7 +24,7 @@ function addProjectToSidebar(project, current_project) {
   child.addEventListener("click", function () {
 
     // changes the current project
-    current_project = switchProject(projects,)
+    onSelect(project)
   });
 
   parent.appendChild(child);
