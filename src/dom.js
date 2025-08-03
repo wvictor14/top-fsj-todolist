@@ -1,29 +1,51 @@
 // this module is for populating the dom
+export function addProjectsToSidebar(projects) {
+  projects.map((currentValue, index, array) => {
+    addProjectToSidebar(currentValue)
+  })
+}
 
-export function addProjectToSidebar(project) {
+function addProjectToSidebar(project, current_project) {
   // parent div
   const parent = document.querySelector(".projects");
 
   // new div for a project
-  const child = document.createElement("div");
+  const child = document.createElement("button");
   child.textContent = project.title;
+  child.id = project.title;
+
+  // add event listener
+  child.addEventListener("click", function () {
+
+    // changes the current project
+    current_project = switchProject(projects,)
+  });
 
   parent.appendChild(child);
 
 }
 
+// set the title and content of the page
+export function addTodoContent(current_project) {
+  clearTodoUI()
+  setTitleOfMain(current_project);
+  current_project.items.map(addTodoUI);
+}
+
+
 // sets the title of the content page based on given project
-export function setTitleOfMain(project){
+function setTitleOfMain(project) {
   const target = document.getElementById("content-title");
   target.textContent = project.title;
 }
 
-export function clearTodoUI() {
+function clearTodoUI() {
   document.querySelector(".lists").innerHTML = '';
 }
 
-export function addTodoUI(todo) {
-// parent div
+// iterates over the properties of a todo object and populates the .lists div
+function addTodoUI(todo) {
+  // parent div
   const parent = document.querySelector(".lists");
 
   // new child div
@@ -59,7 +81,7 @@ export function addTodoUI(todo) {
     notes
   ];
 
-  for (let i = 0; i < childElements.length; i ++) {
+  for (let i = 0; i < childElements.length; i++) {
     child.appendChild(childElements[i]);
   }
 

@@ -45,3 +45,7 @@ export function switchProject(projects, title) {
   return projects.find(project => project.title == title)
   
 }
+
+export function addProject(projects, new_project) {
+  projects.push(new_project)
+}
