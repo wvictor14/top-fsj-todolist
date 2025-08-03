@@ -33,10 +33,7 @@ export function initialize() {
     )
   ];
 
-  addProjectsToSidebar(projects, (clicked_project) => {
-    current_project = clicked_project;
-    addTodoContent(current_project);
-  });
+
   
   return(projects)
 }
