@@ -11,7 +11,7 @@ export function addProjectsToSidebar(projects, onSelect) {
 
 // onSelect is a function
 // project is a project object
-function addProjectToSidebar(project, onSelect) {
+export function addProjectToSidebar(project, onSelect) {
   // parent div
   const parent = document.querySelector(".projects");
 

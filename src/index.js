@@ -1,6 +1,6 @@
 import "./styles.css";
 import { todoItem, project, switchProject } from "./todo.js";
-import { addProjectsToSidebar, addTodoContent } from "./dom.js"
+import { addProjectToSidebar, addProjectsToSidebar, addTodoContent } from "./dom.js"
 import { initialize } from "./initialize.js"
 
 // initial state: 2 items x 2 projects
@@ -19,8 +19,20 @@ const textInput = document.getElementById("add_project_text_input");
 // add event listener
 btn.addEventListener("click", function () {
   // add new project
+  let newProject = new project(textInput.value, [])
+  projects.push(newProject)
+
   // switch current project
+  current_project = newProject;
+
   // update dom
+  addProjectToSidebar(newProject, (clicked_project) => {
+    current_project = clicked_project;
+    addTodoContent(current_project)
+});
+
+  addTodoContent(current_project)
+
 });
 
 //todo add form to enter todo item
