@@ -5,12 +5,7 @@ import { initialize } from "./initialize.js"
 
 // initial state: 2 items x 2 projects
 let projects = initialize();
-
 let current_project = projects[0];
-addProjectsToSidebar(projects, (clicked_project) => {
-  current_project = clicked_project;
-  addTodoContent(current_project);
-});
 addTodoContent(current_project);
 
 //todo add form to enter todo item

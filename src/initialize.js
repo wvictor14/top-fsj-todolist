@@ -1,4 +1,5 @@
 import { todoItem, project} from "./todo.js";
+import { addProjectsToSidebar, addTodoContent} from "./dom.js";
 
 export function initialize() {
   let new_item = new todoItem('Buy Groceries', 'Buy some food', 'Tomorrow', 'High', 'no notes');
@@ -31,6 +32,11 @@ export function initialize() {
       ]
     )
   ];
+
+  addProjectsToSidebar(projects, (clicked_project) => {
+    current_project = clicked_project;
+    addTodoContent(current_project);
+  });
   
   return(projects)
 }
