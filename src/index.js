@@ -18,12 +18,4 @@ addTodoContent(current_project);
 // run addTodo on new item
 
 //todo add form to enter new project
-
-//todo add ability to switch projects
-/// switches project, clears todo, changes title, populates todo
-switchProject(projects[1]);
-clearTodoUI();
-setTitleOfMain(current_project);
-current_project.items.map(addTodoUI);
-
 //todo add delete capabilities to todo item and project
