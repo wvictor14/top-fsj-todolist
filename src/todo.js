@@ -39,7 +39,3 @@ export class project {
   }
 
 }
-
-export function addProject(projects, new_project) {
-  projects.push(new_project)
-}
