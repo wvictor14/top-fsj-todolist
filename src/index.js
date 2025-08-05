@@ -25,5 +25,5 @@ initializeAddProjectButton(projects, setCurrentProject);
 // on submit, add the item to current project
 // run addTodo on new item
 
-//todo add form to enter new project
+//done add form to enter new project
 //todo add delete capabilities to todo item and project
