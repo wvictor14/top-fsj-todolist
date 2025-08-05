@@ -1,3 +1,5 @@
+import { project } from "./todo.js"
+
 // this module is for populating the dom
 
 // addProjectsToSidebar populates sidebar with each project in projects
@@ -11,7 +13,7 @@ export function addProjectsToSidebar(projects, onSelect) {
 
 // onSelect is a function
 // project is a project object
-function addProjectToSidebar(project, onSelect) {
+export function addProjectToSidebar(project, onSelect) {
   // parent div
   const parent = document.querySelector(".projects");
 
@@ -92,4 +94,26 @@ function addTodoUI(todo) {
   }
 
   parent.appendChild(child);
+}
+
+export function initializeAddProjectButton(projects, switchProjectFunc) {
+  const btn = document.getElementById("add_project");
+  const textInput = document.getElementById("add_project_text_input");
+
+  // setup btns - add project
+  btn.addEventListener("click", function () {
+    // add new project
+    let newProject = new project(textInput.value, [])
+    projects.push(newProject)
+
+    // switch current project
+    switchProjectFunc(newProject);
+
+    // update dom
+    addProjectToSidebar(newProject, (clicked_project) => {
+      switchProjectFunc(clicked_project);
+      addTodoContent(clicked_project)
+    });
+    addTodoContent(newProject)
+  });
 }
