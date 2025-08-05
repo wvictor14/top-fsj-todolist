@@ -1,4 +1,4 @@
-import { project, switchProject } from "./todo.js"
+import { project } from "./todo.js"
 
 // this module is for populating the dom
 

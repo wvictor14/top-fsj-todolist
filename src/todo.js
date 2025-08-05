@@ -40,12 +40,6 @@ export class project {
 
 }
 
-export function switchProject(project) {
-  current_project = project;
-  console.log('Current project is now: ', current_project.title)
-  
-}
-
 export function addProject(projects, new_project) {
   projects.push(new_project)
 }
