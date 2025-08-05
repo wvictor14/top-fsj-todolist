@@ -1,6 +1,5 @@
 import "./styles.css";
-import { todoItem, project, switchProject } from "./todo.js";
-import { addProjectToSidebar, addProjectsToSidebar, addTodoContent, initializeAddProjectButton} from "./dom.js"
+import { addProjectsToSidebar, addTodoContent, initializeAddProjectButton} from "./dom.js"
 import { initialize } from "./initialize.js"
 
 
@@ -15,8 +14,12 @@ addProjectsToSidebar(projects, (clicked_project) => {
 });
 addTodoContent(current_project);
 
+function setCurrentProject(project) {
+  current_project = project;
+}
+
 // add eventlisteners to buttons
-initializeAddProjectButton(projects, switchProject);
+initializeAddProjectButton(projects, setCurrentProject);
 
 //todo add form to enter todo item
 // on submit, add the item to current project
