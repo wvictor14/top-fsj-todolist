@@ -21,7 +21,7 @@ function setCurrentProject(project) {
 
 // add eventlisteners to buttons
 initializeAddProjectButton(projects, setCurrentProject);
-
+initializeAddFormButton();
 //todo add form to enter todo item
 // on submit, add the item to current project
 // run addTodo on new item
