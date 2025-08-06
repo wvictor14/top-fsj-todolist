@@ -1,4 +1,4 @@
-import { project } from "./todo.js"
+import { todoItem, project } from "./todo.js"
 
 // this module is for populating the dom
 
@@ -86,7 +86,6 @@ function addTodoUI(todo) {
     desc,
     duedate,
     priority,
-    notes
   ];
 
   for (let i = 0; i < childElements.length; i++) {
@@ -118,7 +117,7 @@ export function initializeAddProjectButton(projects, switchProjectFunc) {
   });
 }
 
-export function initializeAddFormButton() {
+export function initializeAddFormButton(current_project) {
   const btn = document.getElementById("btn_add_todo");
   const form = document.getElementById('form_add_todo');
 
@@ -138,7 +137,14 @@ export function initializeAddFormButton() {
     event.preventDefault(); // Prevent default form submission
 
     // populate the project
-    alert(title.value + description.value + duedate.value + priority.value);
+    current_project.addItem(new todoItem(
+      title.value,
+      description.value,
+      duedate.value,
+      priority.value
+    ));
 
+    // update the dom
+    addTodoContent(current_project);
   })
 }

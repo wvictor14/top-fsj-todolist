@@ -38,4 +38,8 @@ export class project {
     return this._items;
   }
 
+  addItem(todoItem) {
+    this._items.push(todoItem)
+  }
+
 }
