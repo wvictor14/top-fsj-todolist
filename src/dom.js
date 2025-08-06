@@ -119,11 +119,26 @@ export function initializeAddProjectButton(projects, switchProjectFunc) {
 }
 
 export function initializeAddFormButton() {
-  const btn = document.getElementById("add_todo");
+  const btn = document.getElementById("btn_add_todo");
+  const form = document.getElementById('form_add_todo');
+
+  // form content
+  const title = document.getElementById('add_todo_title');
+  const description = document.getElementById('add_todo_description');
+  const duedate = document.getElementById('add_todo_duedate');
+  const priority = document.getElementById('add_todo_priority');
 
   btn.addEventListener("click", function () {
 
     // popup the modal
+
+  })
+
+  form.addEventListener("submit", function (event) {
+    event.preventDefault(); // Prevent default form submission
+
+    // populate the project
+    alert(title.value + description.value + duedate.value + priority.value);
 
   })
 }
