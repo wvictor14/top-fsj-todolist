@@ -97,18 +97,20 @@ function addTodoUI(todo) {
 
 export function initializeAddProjectButton(projects, switchProjectFunc) {
   const btnFocus = document.getElementById("focus_add_project");
-  const btn = document.getElementById("add_project");
+  const btnAddProject = document.getElementById("add_project");
   const textInput = document.getElementById("add_project_text_input");
 
   btnFocus.addEventListener("click", function () {
     // hide button
     btnFocus.style.display = 'none';
+    textInput.style.display = 'inline-block';
+    btnAddProject.style.display = 'inline-block';
     // focus textarea
     textInput.focus();
   });
 
   // setup btns - add project
-  btn.addEventListener("click", function () {
+  btnAddProject.addEventListener("click", function () {
     // add new project
     let newProject = new project(textInput.value, [])
     projects.push(newProject)
@@ -125,6 +127,10 @@ export function initializeAddProjectButton(projects, switchProjectFunc) {
 
     // bthFocus appears
     btnFocus.style.display = 'inline-block';
+
+    // text are and btnAddProject disappears
+    textInput.style.display = 'none';
+    btnAddProject.style.display = 'none';
   });
 
   textInput.addEventListener("keypress", function (event) {
@@ -134,6 +140,7 @@ export function initializeAddProjectButton(projects, switchProjectFunc) {
       event.preventDefault();
       // Trigger the button element with a click
       btn.click();
+      
     }
   });
 }
