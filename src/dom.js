@@ -96,8 +96,16 @@ function addTodoUI(todo) {
 }
 
 export function initializeAddProjectButton(projects, switchProjectFunc) {
+  const btnFocus = document.getElementById("focus_add_project");
   const btn = document.getElementById("add_project");
   const textInput = document.getElementById("add_project_text_input");
+
+  btnFocus.addEventListener("click", function () {
+    // hide button
+    btnFocus.style.display = 'none';
+    // focus textarea
+    textInput.focus();
+  });
 
   // setup btns - add project
   btn.addEventListener("click", function () {
@@ -114,6 +122,19 @@ export function initializeAddProjectButton(projects, switchProjectFunc) {
       addTodoContent(clicked_project)
     });
     addTodoContent(newProject)
+
+    // bthFocus appears
+    btnFocus.style.display = 'inline-block';
+  });
+
+  textInput.addEventListener("keypress", function (event) {
+    // If the user presses the "Enter" key on the keyboard
+    if (event.key === "Enter") {
+      // Cancel the default action, if needed
+      event.preventDefault();
+      // Trigger the button element with a click
+      btn.click();
+    }
   });
 }
 
