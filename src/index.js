@@ -1,5 +1,5 @@
 import "./styles.css";
-import { addProjectsToSidebar, addTodoContent, initializeAddProjectButton} from "./dom.js"
+import { addProjectsToSidebar, addTodoContent, initializeAddProjectButton, initializeAddFormButton} from "./dom.js"
 import { initialize } from "./initialize.js"
 
 
@@ -14,6 +14,7 @@ addProjectsToSidebar(projects, (clicked_project) => {
 });
 addTodoContent(current_project);
 
+// setter to inject into buttons
 function setCurrentProject(project) {
   current_project = project;
 }

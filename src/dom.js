@@ -117,3 +117,13 @@ export function initializeAddProjectButton(projects, switchProjectFunc) {
     addTodoContent(newProject)
   });
 }
+
+export function initializeAddFormButton() {
+  const btn = document.getElementById("add_todo");
+
+  btn.addEventListener("click", function () {
+
+    // popup the modal
+
+  })
+}
