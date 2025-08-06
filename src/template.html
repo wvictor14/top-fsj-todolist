@@ -31,13 +31,19 @@
           </p>
           <p>
             <label for="duedate">duedate:</label>
-            <input type="text" id="add_todo_duedate" name="duedate" />
+            <input type="date" id="add_todo_duedate" name="duedate" value="2025-08-06" min="2025-08-06"
+              max="2050-08-06" />
           </p>
           <p>
             <label for="priority">priority:</label>
-            <input type="text" id="add_todo_priority" name="priority" />
+            <select name="priority" id="add_todo_priority">
+              <option value="">--Please choose an option--</option>
+              <option value="low">Low</option>
+              <option value="medium">Medium</option>
+              <option value="high">High</option>
+            </select>
           </p>
-          <button type="submit" id = "submit_todo">Submit</button>
+          <button type="submit" id="submit_todo">Submit</button>
         </form>
 
       </div>
