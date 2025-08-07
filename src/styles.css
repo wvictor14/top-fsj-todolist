@@ -16,9 +16,11 @@ html, body, html * {
 }
 .sidebar > h1 {
   text-align: center;
+  padding: 25px;
 }
 .content > h1 {
   text-align: center;
+  padding: 25px;
 }
 
 .hidden { 
@@ -43,9 +45,10 @@ html, body, html * {
   gap: 5px;
 }
 
-#add_project {
-  border: 1px black;
+.addBtn {
+  background: rgb(210, 247, 210);
 }
+
 
 /* make the form inputs stretch to fill the width of it's parent div */
 form {
