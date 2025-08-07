@@ -1,4 +1,4 @@
-import { project } from "./todo.js"
+import { todoItem, project } from "./todo.js"
 
 // this module is for populating the dom
 
@@ -86,7 +86,6 @@ function addTodoUI(todo) {
     desc,
     duedate,
     priority,
-    notes
   ];
 
   for (let i = 0; i < childElements.length; i++) {
@@ -97,11 +96,21 @@ function addTodoUI(todo) {
 }
 
 export function initializeAddProjectButton(projects, switchProjectFunc) {
-  const btn = document.getElementById("add_project");
+  const btnFocus = document.getElementById("focus_add_project");
+  const btnAddProject = document.getElementById("add_project");
   const textInput = document.getElementById("add_project_text_input");
 
+  btnFocus.addEventListener("click", function () {
+    // hide button
+    btnFocus.style.display = 'none';
+    textInput.style.display = 'inline-block';
+    btnAddProject.style.display = 'inline-block';
+    // focus textarea
+    textInput.focus();
+  });
+
   // setup btns - add project
-  btn.addEventListener("click", function () {
+  btnAddProject.addEventListener("click", function () {
     // add new project
     let newProject = new project(textInput.value, [])
     projects.push(newProject)
@@ -115,5 +124,55 @@ export function initializeAddProjectButton(projects, switchProjectFunc) {
       addTodoContent(clicked_project)
     });
     addTodoContent(newProject)
+
+    // bthFocus appears
+    btnFocus.style.display = 'inline-block';
+
+    // text are and btnAddProject disappears
+    textInput.style.display = 'none';
+    btnAddProject.style.display = 'none';
   });
+
+  textInput.addEventListener("keypress", function (event) {
+    // If the user presses the "Enter" key on the keyboard
+    if (event.key === "Enter") {
+      // Cancel the default action, if needed
+      event.preventDefault();
+      // Trigger the button element with a click
+      btnAddProject.click();
+      
+    }
+  });
+}
+
+export function initializeAddFormButton(current_project) {
+  const btn = document.getElementById("btn_add_todo");
+  const form = document.getElementById('form_add_todo');
+
+  // form content
+  const title = document.getElementById('add_todo_title');
+  const description = document.getElementById('add_todo_description');
+  const duedate = document.getElementById('add_todo_duedate');
+  const priority = document.getElementById('add_todo_priority');
+
+  btn.addEventListener("click", function () {
+
+    // popup the modal
+
+  })
+
+  form.addEventListener("submit", function (event) {
+    event.preventDefault(); // Prevent default form submission
+
+    // populate the project
+    current_project.addItem(new todoItem(
+      title.value,
+      description.value,
+      duedate.value,
+      priority.value
+    ));
+
+    // update the dom
+    addTodoContent(current_project);
+  })
 }

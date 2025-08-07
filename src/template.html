@@ -1,22 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>todo</title>
 </head>
+
 <body>
   <div class="main">
     <div class="sidebar">
       <h1>Projects</h1>
       <div class="projects"></div>
-      <button id='add_project' class="button">+</button>
-      <input type="text" id = "add_project_text_input" placeholder="Add Project">
+      <button id="focus_add_project">+</button>
+      <div class="add_project_text">
+        <input type="text" id="add_project_text_input" placeholder="Add Project" class='hidden'>
+        <button id='add_project' class="addBtn button hidden">add</button>
+      </div>
     </div>
     <div class="content">
       <h1 id="content-title">Title</h1>
       <div class="lists"></div>
+      <button id="btn_add_todo" class="button">+</button>
+      <div class="add_todo_div">
+        <form id="form_add_todo">
+          <p>
+            <label for="title">title:</label>
+            <input type="text" id="add_todo_title" name="title" />
+          </p>
+          <p>
+            <label for="description">description:</label>
+            <textarea id="add_todo_description" name="description"></textarea>
+          </p>
+          <p>
+            <label for="duedate">duedate:</label>
+            <input type="date" id="add_todo_duedate" name="duedate" value="2025-08-06" min="2025-08-06"
+              max="2050-08-06" />
+          </p>
+          <p>
+            <label for="priority">priority:</label>
+            <select name="priority" id="add_todo_priority">
+              <option value="">--Please choose an option--</option>
+              <option value="low">Low</option>
+              <option value="medium">Medium</option>
+              <option value="high">High</option>
+            </select>
+          </p>
+          <button type="submit" id="submit_todo" class = 'addBtn'>Add item</button>
+        </form>
+
+      </div>
     </div>
   </div>
 </body>
+
 </html>

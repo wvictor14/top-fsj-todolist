@@ -1,5 +1,5 @@
 import "./styles.css";
-import { addProjectsToSidebar, addTodoContent, initializeAddProjectButton} from "./dom.js"
+import { addProjectsToSidebar, addTodoContent, initializeAddProjectButton, initializeAddFormButton} from "./dom.js"
 import { initialize } from "./initialize.js"
 
 
@@ -14,13 +14,14 @@ addProjectsToSidebar(projects, (clicked_project) => {
 });
 addTodoContent(current_project);
 
+// setter to inject into buttons
 function setCurrentProject(project) {
   current_project = project;
 }
 
 // add eventlisteners to buttons
 initializeAddProjectButton(projects, setCurrentProject);
-
+initializeAddFormButton(current_project);
 //todo add form to enter todo item
 // on submit, add the item to current project
 // run addTodo on new item
