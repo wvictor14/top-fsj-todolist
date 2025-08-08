@@ -24,29 +24,27 @@
       <button id="btn_add_todo" class="button">+</button>
       <div class="add_todo_div">
         <form id="form_add_todo">
-          <p>
-            <label for="title">title:</label>
+          <p class = 'hidden add_todo_input' id="add_todo_title_p">
             <input type="text" id="add_todo_title" name="title" />
           </p>
-          <p>
+          <p class = 'hidden add_todo_input'>
             <label for="description">description:</label>
             <textarea id="add_todo_description" name="description"></textarea>
           </p>
-          <p>
+          <p class = 'hidden add_todo_input'>
             <label for="duedate">duedate:</label>
             <input type="date" id="add_todo_duedate" name="duedate" value="2025-08-06" min="2025-08-06"
               max="2050-08-06" />
           </p>
-          <p>
+          <p class = 'hidden add_todo_input'>
             <label for="priority">priority:</label>
             <select name="priority" id="add_todo_priority">
-              <option value="">--Please choose an option--</option>
-              <option value="low">Low</option>
+              <option value="low" selected>Low</option>
               <option value="medium">Medium</option>
               <option value="high">High</option>
             </select>
           </p>
-          <button type="submit" id="submit_todo" class = 'addBtn'>Add item</button>
+          <button type="submit" id="submit_todo" class = 'addBtn hidden add_todo_input'>Add item</button>
         </form>
 
       </div>

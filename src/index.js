@@ -1,5 +1,5 @@
 import "./styles.css";
-import { addProjectsToSidebar, addTodoContent, initializeAddProjectButton, initializeAddFormButton} from "./dom.js"
+import { addProjectsToSidebar, addTodoContent, initializeAddProjectButton, attachListenersToAddToDoButton, attachListenerToEditBtn} from "./dom.js"
 import { initialize } from "./initialize.js"
 
 
@@ -21,10 +21,11 @@ function setCurrentProject(project) {
 
 // add eventlisteners to buttons
 initializeAddProjectButton(projects, setCurrentProject);
-initializeAddFormButton(current_project);
-//todo add form to enter todo item
-// on submit, add the item to current project
-// run addTodo on new item
+attachListenersToAddToDoButton(current_project);
 
-//done add form to enter new project
+
+
+
 //todo add delete capabilities to todo item and project
+//todo make todo hidden by default, visible on click
+//todo make the details expand on click
