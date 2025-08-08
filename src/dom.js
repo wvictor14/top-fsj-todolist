@@ -38,6 +38,7 @@ export function addTodoContent(current_project) {
   clearTodoUI()
   setTitleOfMain(current_project);
   current_project.items.map(addTodoUI);
+  formInputsDisplay('none');
 }
 
 
@@ -150,6 +151,7 @@ export function initializeAddProjectButton(projects, switchProjectFunc) {
     addProjectToSidebar(newProject, (clicked_project) => {
       switchProjectFunc(clicked_project);
       addTodoContent(clicked_project)
+      
     });
     addTodoContent(newProject)
 
@@ -188,15 +190,19 @@ export function attachListenersToAddToDoButton(current_project) {
   // will make the form visible, focus to title text area
   const btn = document.getElementById("btn_add_todo");
   const title_p = document.getElementById('add_todo_title_p');
-  btn.addEventListener("click", function () {
+
+  function handleClick() {
     title_p.style.display = "inline-block";
     btn.style.display = 'none';
     title.focus();
-  })
+  } 
+
+  btn.removeEventListener("click", handleClick);
+  btn.addEventListener("click", handleClick);
 
 
   // attach event listener to "enter" to submit
-  title.addEventListener("keypress", function (event) {
+  function handleEnter (event) {
     // If the user presses the "Enter" key on the keyboard
     if (event.key === "Enter") {
       // Cancel the default action, if needed
@@ -207,7 +213,9 @@ export function attachListenersToAddToDoButton(current_project) {
       title_p.style.display = "none";
       btn.style.display = 'inline-block';
     }
-  });
+  }
+  title.removeEventListener("keypress", handleEnter);
+  title.addEventListener("keypress", handleEnter);
 
   // add submit event handler to the form submit
   function submitHandler(event) {
@@ -223,10 +231,10 @@ export function attachListenersToAddToDoButton(current_project) {
 
     // update the dom
     addTodoContent(current_project);
-    attachListenersToEditBtns(current_project, submitHandler);
   }
 
   // add eventlistener to the submit form button, populate project and update ui
+  form.removeEventListener("submit", submitHandler);
   form.addEventListener("submit", submitHandler);
 
   attachListenersToEditBtns(current_project, submitHandler);
@@ -292,6 +300,7 @@ export function attachListenerToEditBtn(current_project, current_todo, current_s
 
     }
 
+    form.removeEventListener('submit', submitHandler_update);
     form.addEventListener('submit', submitHandler_update);
 
     // show form
