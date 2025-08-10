@@ -41,7 +41,12 @@ html, body, html * {
 .projects > * {
   text-align: left;
 }
-
+#focus_add_project {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: gray;
+  flex: 0 0 auto;  /* Don't grow, don't shrink, size to content */
+}
 .add_project_text {
   display: flex;
   flex-direction: row;
