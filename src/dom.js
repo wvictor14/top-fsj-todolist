@@ -8,6 +8,7 @@ let currentEventHandlers = {
   editHandlers: new Map() // Map to store edit handlers by todo ID
 };
 
+// attaches listeners to "+" button, and edit buttons
 export function attachListenersToAddToDoButton(current_project) {
   const form = document.getElementById('form_add_todo');
   const title = document.getElementById('add_todo_title');
