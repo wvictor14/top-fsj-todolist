@@ -295,7 +295,7 @@ function addTodoUI(todo) {
 
   const deleteBtn = document.createElement("button");
   deleteBtn.classList.add('delete');
-  deleteBtn.id = 'deleteBtn-' + todo.title.replace(/\s+/g, '-');
+  deleteBtn.id = 'deleteBtn-' + todo.id;
   deleteBtn.textContent = 'x';
 
   child3.appendChild(editBtn);
