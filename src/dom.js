@@ -268,15 +268,21 @@ function addTodoUI(todo) {
   title.textContent = todo.title;
   title.classList.add('title');
 
+  const belowTitleDiv = document.createElement('div');
+  belowTitleDiv.classList.add('below-title');
+
   const duedate = document.createElement('div');
   duedate.textContent = ' ' + todo.dueDate;
   duedate.classList.add('duedate');
 
-  const childElements = [title, duedate,];
+  const priority = document.createElement('div');
+  priority.textContent = ' ' + todo.priority;
+  priority.classList.add('priority');
+  priority.classList.add('priority-' + todo.priority.toLowerCase());
+  
+  [duedate, priority].forEach(item => belowTitleDiv.appendChild(item));
+  [title, belowTitleDiv].forEach(item => child2.appendChild(item));
 
-  for (let i = 0; i < childElements.length; i++) {
-    child2.appendChild(childElements[i]);
-  }
 
   const child3 = document.createElement('div');
   child3.className = 'todo-item-controls';
