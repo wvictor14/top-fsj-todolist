@@ -258,6 +258,7 @@ function addTodoUI(todo) {
   const parent = document.querySelector(".lists");
   const child = document.createElement('div');
   child.className = 'todo-item';
+  child.id = 'todo-item-' + todo.id;
 
   const child2 = document.createElement('div');
   child2.className = 'todo-item-content';
