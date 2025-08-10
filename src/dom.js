@@ -204,6 +204,15 @@ function removeAllEventListeners() {
       editBtn.removeEventListener("click", handler);
     }
   });
+
+  // Remove delete button listeners
+  currentEventHandlers.deleteHandlers.forEach((handler, todoId) => {
+    const deleteBtn = document.getElementById('deleteBtn-' + todoId);
+    if (deleteBtn) {
+      deleteBtn.removeEventListener("click", handler);
+    }
+  });
+
 }
 
 // Keep your existing functions unchanged
