@@ -14,6 +14,9 @@ html, body, html * {
 .content {
   padding: 8px;
 }
+.content {
+  margin: 5px 20px;
+}
 .sidebar > h1 {
   text-align: center;
   padding: 25px;
@@ -81,12 +84,32 @@ button {
 }
 
 .todo-item {
+  margin: 5px 0px;
+  padding: 8px 10px;
   display: flex;
+  justify-content: space-between; /* Pushes items to opposite ends */
+  background:rgb(239, 243, 240);
+  border-radius: 1rem;
 }
 .todo-item-content {
-  display: flex;
+  display: block;
   align-items: center;
 }
+
+.todo-item-controls {
+  display: flex;
+  align-items: center; 
+}
+
+.title {
+  font-size: 1rem;
+}
+.duedate {
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: grey;
+}
+
 .edit {
   background: rgba(17, 154, 69, 0.25);
 }

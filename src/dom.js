@@ -11,7 +11,7 @@ let currentEventHandlers = {
 
 // attaches listeners to "+" button, and edit buttons
 // main event listener function
-export function attachListenersToAddToDoButton(current_project) {
+export function attachTodoListeners(current_project) {
   const form = document.getElementById('form_add_todo');
   const title = document.getElementById('add_todo_title');
   const description = document.getElementById('add_todo_description');
@@ -242,7 +242,7 @@ export function addTodoContent(current_project) {
   formInputsDisplay('none');
   
   // Reattach listeners after DOM update
-  attachListenersToAddToDoButton(current_project);
+  attachTodoListeners(current_project);
 }
 
 function setTitleOfMain(project) {
@@ -263,23 +263,16 @@ function addTodoUI(todo) {
   const child2 = document.createElement('div');
   child2.className = 'todo-item-content';
 
-  const title = document.createElement("span");
+
+  const title = document.createElement("div");
   title.textContent = todo.title;
   title.classList.add('title');
 
-  const desc = document.createElement("span");
-  desc.textContent = ' ' + todo.description;
-  desc.classList.add('desc');
-
-  const duedate = document.createElement('span');
+  const duedate = document.createElement('div');
   duedate.textContent = ' ' + todo.dueDate;
   duedate.classList.add('duedate');
 
-  const priority = document.createElement('span');
-  priority.textContent = ' ' + todo.priority;
-  priority.classList.add('priority');
-
-  const childElements = [title, desc, duedate, priority];
+  const childElements = [title, duedate,];
 
   for (let i = 0; i < childElements.length; i++) {
     child2.appendChild(childElements[i]);

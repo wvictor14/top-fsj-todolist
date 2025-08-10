@@ -1,3 +1,4 @@
+import 'bootstrap-icons/font/bootstrap-icons.css';
 import "./styles.css";
 import { initialize, initializeUI } from "./initialize.js"
 

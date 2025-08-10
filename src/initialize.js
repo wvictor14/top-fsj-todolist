@@ -1,5 +1,5 @@
 import { todoItem, project } from "./todo.js";
-import { addProjectsToSidebar, addTodoContent, initializeAddProjectButton, attachListenersToAddToDoButton} from "./dom.js"
+import { addProjectsToSidebar, addTodoContent, initializeAddProjectButton, attachTodoListeners} from "./dom.js"
 
 export function initialize() {
   let new_item = new todoItem('Buy Groceries', 'Buy some food', 'Tomorrow', 'High', 'no notes');
@@ -44,7 +44,7 @@ export function initializeUI(projects, current_project) {
   addProjectsToSidebar(projects, (clicked_project) => {
     current_project = clicked_project;
     addTodoContent(current_project);
-    attachListenersToAddToDoButton(current_project);
+    attachTodoListeners(current_project);
   });
 
   // populate the content
@@ -55,5 +55,5 @@ export function initializeUI(projects, current_project) {
     current_project = project;
   }
   initializeAddProjectButton(projects, setCurrentProject);
-  attachListenersToAddToDoButton(current_project);
+  attachTodoListeners(current_project);
 } 
