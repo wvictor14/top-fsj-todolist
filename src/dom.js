@@ -9,6 +9,7 @@ let currentEventHandlers = {
 };
 
 // attaches listeners to "+" button, and edit buttons
+// main event listener function
 export function attachListenersToAddToDoButton(current_project) {
   const form = document.getElementById('form_add_todo');
   const title = document.getElementById('add_todo_title');
@@ -74,6 +75,13 @@ export function attachListenersToEditBtns(current_project) {
 
   current_project.items.forEach((todo) => {
     attachListenerToEditBtn(current_project, todo);
+  });
+}
+
+export function formInputsDisplay(display = 'none') {
+  const formInputs = document.querySelectorAll('.add_todo_input');
+  formInputs.forEach(element => {
+    element.style.display = display;
   });
 }
 
@@ -262,6 +270,7 @@ function addTodoUI(todo) {
   parent.appendChild(child);
 }
 
+// sidebar PROJECT dom functions
 export function initializeAddProjectButton(projects, switchProjectFunc) {
   const btnFocus = document.getElementById("focus_add_project");
   const btnAddProject = document.getElementById("add_project");
@@ -296,12 +305,5 @@ export function initializeAddProjectButton(projects, switchProjectFunc) {
       event.preventDefault();
       btnAddProject.click();
     }
-  });
-}
-
-export function formInputsDisplay(display = 'none') {
-  const formInputs = document.querySelectorAll('.add_todo_input');
-  formInputs.forEach(element => {
-    element.style.display = display;
   });
 }
