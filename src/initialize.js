@@ -4,7 +4,7 @@ import { addProjectsToSidebar, addTodoContent, initializeAddProjectButton, attac
 export function initialize() {
   let new_item = new todoItem('Buy Groceries', 'Buy some food', 'Tomorrow', 'High', 'no notes');
   let default_project = new project(
-    'Default',
+    'Today',
     [
       new_item,
       new todoItem('Call mom', 'using landline', 'Soon', 'medium')
