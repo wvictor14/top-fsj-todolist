@@ -5,7 +5,8 @@ let currentEventHandlers = {
   addTodoClick: null,
   addTodoEnter: null,
   formSubmit: null,
-  editHandlers: new Map() // Map to store edit handlers by todo ID
+  editHandlers: new Map(), // Map to store edit handlers by todo ID
+  deleteHandlers: new Map(),
 };
 
 // attaches listeners to "+" button, and edit buttons
@@ -67,7 +68,26 @@ export function attachListenersToAddToDoButton(current_project) {
 
   // Attach edit button listeners
   attachListenersToEditBtns(current_project);
+
+export function attachDeleteListener(current_project, current_todo) {
+  const deleteBtn = document.getElementById('deleteBtn-' + current_todo.id);
+  const todoItem = document.getElementById('todo-item-' + current_todo.id);
+
+  if (!deleteBtn) return; // Guard against missing elements
+
+  function handleDelete() {
+    todoItem.remove(); // deletes from dom
+    current_project.items = current_project.items.filter(todo => todo.id != current_todo.id); // delete from current_project
+    console.log(current_project);
+  }
+
+  // Store the handler reference
+  currentEventHandlers.deleteHandlers.set(current_todo.id, handleDelete);
+  
+  // Add the listener
+  deleteBtn.addEventListener("click", handleDelete);
 }
+
 
 export function attachListenersToEditBtns(current_project) {
   // Clear existing edit handlers
