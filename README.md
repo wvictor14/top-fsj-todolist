@@ -7,6 +7,12 @@ setup with `sh https://raw.githubusercontent.com/wvictor14/learnjs/refs/heads/ma
 start webpack
 `npx webpack serve`
 
+# learned things
+
+- Define event listeners with references (not anonymous/in-line) so that they can be easily removed
+- store event listener handlers somewhere
+- a function to remove all event listeneres is helpful
+- global state is useful, but need to understand more how it works under modules.
 
 ### [Assignment](https://www.theodinproject.com/lessons/node-path-javascript-todo-list#assignment)
 
