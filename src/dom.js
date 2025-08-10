@@ -284,12 +284,12 @@ function addTodoUI(todo) {
   const editBtn = document.createElement("button");
   editBtn.classList.add('edit');
   editBtn.id = 'editBtn-' + todo.id;
-  editBtn.textContent = 'edit';
+  editBtn.innerHTML = '<i class="bi-pencil-square"></i>';
 
   const deleteBtn = document.createElement("button");
   deleteBtn.classList.add('delete');
   deleteBtn.id = 'deleteBtn-' + todo.id;
-  deleteBtn.textContent = 'x';
+  deleteBtn.innerHTML = '<i class="bi-trash"></i>';
 
   child3.appendChild(editBtn);
   child3.appendChild(deleteBtn);
