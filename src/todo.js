@@ -60,6 +60,10 @@ export class project {
     return this._items;
   }
 
+  set items(array) {
+    this._items = array;
+  }
+
   addItem(todoItem) {
     this._items.push(todoItem)
   }
