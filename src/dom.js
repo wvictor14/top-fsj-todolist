@@ -69,6 +69,11 @@ export function attachListenersToAddToDoButton(current_project) {
   // Attach edit button listeners
   attachListenersToEditBtns(current_project);
 
+  current_project.items.forEach((todo) => {
+    attachDeleteListener(current_project, todo);
+  });
+}
+
 export function attachDeleteListener(current_project, current_todo) {
   const deleteBtn = document.getElementById('deleteBtn-' + current_todo.id);
   const todoItem = document.getElementById('todo-item-' + current_todo.id);
