@@ -41,7 +41,8 @@ html, body, html * {
 .projects > * {
   text-align: left;
 }
-#focus_add_project {
+#focus_add_project,
+#btn_add_todo {
   font-size: 0.9rem;
   font-weight: 500;
   color: gray;
