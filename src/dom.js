@@ -151,7 +151,7 @@ export function initializeAddProjectButton(projects, switchProjectFunc) {
     addProjectToSidebar(newProject, (clicked_project) => {
       switchProjectFunc(clicked_project);
       addTodoContent(clicked_project)
-      
+
     });
     addTodoContent(newProject)
 
@@ -195,14 +195,14 @@ export function attachListenersToAddToDoButton(current_project) {
     title_p.style.display = "inline-block";
     btn.style.display = 'none';
     title.focus();
-  } 
+  }
 
   btn.removeEventListener("click", handleClick);
   btn.addEventListener("click", handleClick);
 
 
   // attach event listener to "enter" to submit
-  function handleEnter (event) {
+  function handleEnter(event) {
     // If the user presses the "Enter" key on the keyboard
     if (event.key === "Enter") {
       // Cancel the default action, if needed
@@ -262,51 +262,55 @@ export function attachListenerToEditBtn(current_project, current_todo, current_s
   const btnSubmit = document.getElementById("submit_todo");
   const editBtn = document.getElementById('editBtn-' + current_todo.id);
 
-  editBtn.addEventListener("click", function () {
+  function handleEdit() {
+    {
 
-    // populate form with details of current item
-    formTitle.value = current_todo.title;
-    formDescription.value = current_todo.description;
-    formDuedate.value = current_todo.duedate;
-    formPriority.value = current_todo.priority;
+      // populate form with details of current item
+      formTitle.value = current_todo.title;
+      formDescription.value = current_todo.description;
+      formDuedate.value = current_todo.duedate;
+      formPriority.value = current_todo.priority;
 
-    // switch "Add item" To say "Update"
-    btnSubmit.textContent = 'Update';
-    // Update should now update current item, rather than add
-    // first remove current handler, which adds item to todo list
-    form.removeEventListener('submit', current_submitHandler);
+      // switch "Add item" To say "Update"
+      btnSubmit.textContent = 'Update';
+      
+      // Update should now update current item, rather than add
+      // first remove current handler, which adds item to todo list
+      form.removeEventListener('submit', current_submitHandler);
 
-    // now update current todo
-    function submitHandler_update(event) {
-      event.preventDefault();
-      current_todo.title = formTitle.value;
-      current_todo.description = formDescription.value;
-      current_todo.duedate = formDuedate.value;
-      current_todo.priority = formPriority.value;
+      // now update current todo
+      function submitHandler_update(event) {
+        event.preventDefault();
+        current_todo.title = formTitle.value;
+        current_todo.description = formDescription.value;
+        current_todo.duedate = formDuedate.value;
+        current_todo.priority = formPriority.value;
 
-      // update the dom
-      addTodoContent(current_project);
+        // update the dom
+        addTodoContent(current_project);
 
-      // reset to original
-      // 1. now make the form disappear
-      // 2. replace with original event listener (add)
-      // 3. add listeners to edit buttons
-      formInputsDisplay('none');
-      btnAddToDo.style.display = 'flex';
-      btnSubmit.textContent = 'Add';
+        // reset to original
+        // 1. now make the form disappear
+        // 2. replace with original event listener (add)
+        // 3. add listeners to edit buttons
+        formInputsDisplay('none');
+        btnAddToDo.style.display = 'flex';
+        btnSubmit.textContent = 'Add';
+        form.removeEventListener('submit', submitHandler_update);
+        form.addEventListener('submit', current_submitHandler);
+        attachListenersToEditBtns(current_project, current_submitHandler);
+
+      }
+
       form.removeEventListener('submit', submitHandler_update);
-      form.addEventListener('submit', current_submitHandler);
-      attachListenersToEditBtns(current_project, current_submitHandler);
+      form.addEventListener('submit', handleEdit);
 
+      // show form
+      btnAddToDo.style.display = 'none';
+      formInputsDisplay('flex');
     }
-
-    form.removeEventListener('submit', submitHandler_update);
-    form.addEventListener('submit', submitHandler_update);
-
-    // show form
-    btnAddToDo.style.display = 'none';
-    formInputsDisplay('flex');
-  })
+  }
+  editBtn.addEventListener("click", handleEdit);
 }
 
 export function formInputsDisplay(display = 'none') {
