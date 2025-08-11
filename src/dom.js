@@ -7,6 +7,7 @@ let currentEventHandlers = {
   formSubmit: null,
   editHandlers: new Map(), // Map to store edit handlers by todo ID
   deleteHandlers: new Map(),
+  statusHandlers: new Map(),
 };
 
 // attaches listeners to "+" button, and edit buttons
@@ -71,7 +72,44 @@ export function attachTodoListeners(current_project) {
 
   current_project.items.forEach((todo) => {
     attachDeleteListener(current_project, todo);
+    attachStatusListener(todo)
   });
+}
+
+export function attachStatusListener(current_todo) {
+  const status = document.getElementById('todo-item-' + current_todo.id);
+  if (!status) return; // Guard against missing elements
+
+  function handleStatus() {
+    
+    console.log(current_todo.status);
+    let old_class, new_class, new_status;
+
+    if (current_todo.status == 'done') {
+      old_class = 'status-done';
+      new_class = 'status-not-done';
+      new_status = 'not done';
+    } else if (current_todo.status == 'not done') {
+      old_class = 'status-not-done';
+      new_class = 'status-done';
+      new_status = 'done';
+    }
+
+    // update current todo
+    current_todo.status = new_status;
+    
+    // apply dom updates
+    status.classList.remove(old_class);
+    status.classList.add(new_class);
+
+  }
+
+  // Store the handler reference
+  currentEventHandlers.statusHandlers.set(current_todo.id, handleStatus);
+  
+  // Add the listener
+  status.addEventListener("click", handleStatus);
+
 }
 
 export function attachDeleteListener(current_project, current_todo) {
@@ -83,7 +121,6 @@ export function attachDeleteListener(current_project, current_todo) {
   function handleDelete() {
     todoItem.remove(); // deletes from dom
     current_project.items = current_project.items.filter(todo => todo.id != current_todo.id); // delete from current_project
-    console.log(current_project);
   }
 
   // Store the handler reference
@@ -210,6 +247,14 @@ function removeAllEventListeners() {
     const deleteBtn = document.getElementById('deleteBtn-' + todoId);
     if (deleteBtn) {
       deleteBtn.removeEventListener("click", handler);
+    }
+  });
+
+  // Remove status button listeners
+  currentEventHandlers.statusHandlers.forEach((handler, todoId) => {
+    const status = document.getElementById('todo-item-' + todoId);
+    if (status) {
+      status.removeEventListener("click", handler);
     }
   });
 

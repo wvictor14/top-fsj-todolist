@@ -115,10 +115,16 @@ button {
   display: flex;
   justify-content: space-between;
   /* Pushes items to opposite ends */
-  background: rgb(239, 243, 240);
   border-radius: 1rem;
 }
 
+.status-not-done {
+  background: rgb(208, 181, 181);
+}
+
+.status-done {
+  background: red;
+}
 .todo-item-content {
   display: block;
   align-items: center;
