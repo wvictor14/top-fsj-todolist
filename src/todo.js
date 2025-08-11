@@ -12,6 +12,10 @@ export class todoItem {
     this._dueDate = dueDate;
     this._priority = priority;
     this._notes = notes;
+    this._status = 'not done';
+  }
+  get status() {
+    return this._status;
   }
   get id() {
     return this._id;
@@ -43,6 +47,13 @@ export class todoItem {
   }
   set priority(value) {
     this._priority = value;
+  }
+  set status(value) {
+    if (!['done', 'not done'].some(ele => ele.includes(value))) {
+      alert('must be one of "done", "not done"');
+      return;
+    }
+    this._status = value;
   }
 }
 
