@@ -77,8 +77,12 @@ export function attachTodoListeners(current_project) {
 }
 
 export function attachStatusListener(current_todo) {
-  const status = document.getElementById('todo-item-' + current_todo.id);
-  if (!status) return; // Guard against missing elements
+
+  // apply listener to title div
+  const parentElement = document.getElementById('todo-item-' + current_todo.id);
+  const target = parentElement.getElementsByClassName('title')[0];
+
+  if (!target) return; // Guard against missing elements
 
   function handleStatus() {
 
@@ -98,8 +102,8 @@ export function attachStatusListener(current_todo) {
     current_todo.status = new_status;
 
     // apply dom updates
-    status.classList.remove(old_class);
-    status.classList.add(new_class);
+    target.classList.remove(old_class);
+    target.classList.add(new_class);
 
   }
 
@@ -304,19 +308,19 @@ function addTodoUI(todo) {
   child.className = 'todo-item';
   child.id = 'todo-item-' + todo.id;
 
-  if (todo.status == 'done') {
-    child.classList.remove('status-not-done');
-    child.classList.add('status-done');
-  } else if (todo.status == 'not done') {
-    child.classList.remove('status-done');
-    child.classList.add('status-not-done');
-  }
+  // apply listener to title div
+  const titleDiv = child.getElementsByClassName('title')[0];
 
-  child.classList.add('status-not-done');
+  if (todo.status == 'done') {
+    titleDiv.classList.remove('status-not-done');
+    titleDiv.classList.add('status-done');
+  } else if (todo.status == 'not done') {
+    titleDiv.classList.remove('status-done');
+    titleDiv.classList.add('status-not-done');
+  }
 
   const child2 = document.createElement('div');
   child2.className = 'todo-item-content';
-
 
   const title = document.createElement("div");
   title.textContent = todo.title;
