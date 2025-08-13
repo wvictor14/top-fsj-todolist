@@ -54,6 +54,9 @@ html * {
 .projects>* {
   text-align: left;
 }
+.projects>*:hover {
+  cursor: pointer;
+}
 
 #focus_add_project,
 #btn_add_todo {
@@ -63,7 +66,10 @@ html * {
   flex: 0 0 auto;
   /* Don't grow, don't shrink, size to content */
 }
-
+#focus_add_project:hover,
+#btn_add_todo:hover {
+  cursor: pointer;
+}
 .add_project_text {
   display: flex;
   flex-direction: row;
@@ -117,13 +123,18 @@ button {
   /* Pushes items to opposite ends */
   border-radius: 1rem;
 }
+.todo-item:hover {
+  cursor: pointer;
+}
 
 .status-not-done {
-  background: rgb(208, 181, 181);
+  background: rgb(226, 231, 223);
 }
 
 .status-done {
-  background: red;
+  color: grey;
+  background: rgb(243, 237, 237);
+  text-decoration: line-through;
 }
 .todo-item-content {
   display: block;
@@ -184,10 +195,12 @@ button {
 
 .edit:hover {
   background: rgb(113, 201, 230);
+  cursor: pointer;
 }
 
 .delete:hover {
   background: rgb(255, 78, 78);
+  cursor: pointer;
 }
 
 button:hover {
