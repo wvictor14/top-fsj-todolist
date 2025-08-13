@@ -80,8 +80,7 @@ export function attachStatusListener(current_todo) {
 
   // apply listener to title div
   const parentElement = document.getElementById('todo-item-' + current_todo.id);
-  const target = parentElement.getElementsByClassName('title')[0];
-
+  const target = parentElement.querySelector('.todo-item-content .title');
   if (!target) return; // Guard against missing elements
 
   function handleStatus() {
@@ -111,7 +110,7 @@ export function attachStatusListener(current_todo) {
   currentEventHandlers.statusHandlers.set(current_todo.id, handleStatus);
 
   // Add the listener
-  status.addEventListener("click", handleStatus);
+  target.addEventListener("click", handleStatus);
 
 }
 
@@ -255,7 +254,8 @@ function removeAllEventListeners() {
 
   // Remove status button listeners
   currentEventHandlers.statusHandlers.forEach((handler, todoId) => {
-    const status = document.getElementById('todo-item-' + todoId);
+    const status = document.getElementById('todo-item-' + todoId).querySelector('.todo-item-content .title');
+
     if (status) {
       status.removeEventListener("click", handler);
     }
@@ -308,23 +308,22 @@ function addTodoUI(todo) {
   child.className = 'todo-item';
   child.id = 'todo-item-' + todo.id;
 
-  // apply listener to title div
-  const titleDiv = child.getElementsByClassName('title')[0];
-
-  if (todo.status == 'done') {
-    titleDiv.classList.remove('status-not-done');
-    titleDiv.classList.add('status-done');
-  } else if (todo.status == 'not done') {
-    titleDiv.classList.remove('status-done');
-    titleDiv.classList.add('status-not-done');
-  }
 
   const child2 = document.createElement('div');
   child2.className = 'todo-item-content';
 
   const title = document.createElement("div");
   title.textContent = todo.title;
-  title.classList.add('title');
+  title.classList.add('title', 'status');
+
+  // apply status class to title div
+  if (todo.status == 'done') {
+    title.classList.remove('status-not-done');
+    title.classList.add('status-done');
+  } else if (todo.status == 'not done') {
+    title.classList.remove('status-done');
+    title.classList.add('status-not-done');
+  }
 
   const belowTitleDiv = document.createElement('div');
   belowTitleDiv.classList.add('below-title');
@@ -340,7 +339,6 @@ function addTodoUI(todo) {
 
   [duedate, priority].forEach(item => belowTitleDiv.appendChild(item));
   [title, belowTitleDiv].forEach(item => child2.appendChild(item));
-
 
   const child3 = document.createElement('div');
   child3.className = 'todo-item-controls';
