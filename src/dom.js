@@ -254,11 +254,17 @@ function removeAllEventListeners() {
 
   // Remove status button listeners
   currentEventHandlers.statusHandlers.forEach((handler, todoId) => {
-    const status = document.getElementById('todo-item-' + todoId).querySelector('.todo-item-content .title');
 
-    if (status) {
+    const parentElement = document.getElementById('todo-item-' + todoId);
+    
+    if (parentElement) {
+      const status = parentElement.querySelector('.todo-item-content .title');
+          if (status) {
       status.removeEventListener("click", handler);
     }
+    }
+
+
   });
 
 }
