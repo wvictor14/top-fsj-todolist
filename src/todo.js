@@ -1,7 +1,7 @@
-let id = 0
+let id = 0;
 
-export function getUniqueId()  {
-  return id++ + '';
+export function getUniqueId() {
+  return id++ + "";
 }
 
 export class todoItem {
@@ -12,7 +12,7 @@ export class todoItem {
     this._dueDate = dueDate;
     this._priority = priority;
     this._notes = notes;
-    this._status = 'not done';
+    this._status = "not done";
   }
   get status() {
     return this._status;
@@ -49,7 +49,7 @@ export class todoItem {
     this._priority = value;
   }
   set status(value) {
-    if (!['done', 'not done'].some(ele => ele.includes(value))) {
+    if (!["done", "not done"].some((ele) => ele.includes(value))) {
       alert('must be one of "done", "not done"');
       return;
     }
@@ -76,7 +76,6 @@ export class project {
   }
 
   addItem(todoItem) {
-    this._items.push(todoItem)
+    this._items.push(todoItem);
   }
-
 }

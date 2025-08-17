@@ -1,7 +1,6 @@
-import 'bootstrap-icons/font/bootstrap-icons.css';
+import "bootstrap-icons/font/bootstrap-icons.css";
 import "./styles.css";
-import { initialize, initializeUI } from "./initialize.js"
-
+import { initialize, initializeUI } from "./initialize.js";
 
 // initialize state: 2 items x 2 projects
 let projects = initialize();

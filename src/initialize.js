@@ -1,43 +1,45 @@
 import { todoItem, project } from "./todo.js";
-import { addProjectsToSidebar, addTodoContent, initializeAddProjectButton, attachTodoListeners} from "./dom.js"
+import {
+  addProjectsToSidebar,
+  addTodoContent,
+  initializeAddProjectButton,
+  attachTodoListeners,
+} from "./dom.js";
 
 export function initialize() {
-  let new_item = new todoItem('Buy Groceries', 'Buy some food', 'Tomorrow', 'High', 'no notes');
-  let default_project = new project(
-    'Today',
-    [
-      new_item,
-      new todoItem('Call mom', 'using landline', 'Soon', 'medium')
-    ]
+  let new_item = new todoItem(
+    "Buy Groceries",
+    "Buy some food",
+    "Tomorrow",
+    "High",
+    "no notes",
   );
+  let default_project = new project("Today", [
+    new_item,
+    new todoItem("Call mom", "using landline", "Soon", "medium"),
+  ]);
 
   let projects = [
     default_project,
-    new project(
-      'Work',
-      [
-        new todoItem(
-          'Schedule Vacation',
-          'Schedule it for the long weekend',
-          'Today',
-          'Low'
-        ),
-        new todoItem(
-          'Finish ML project',
-          'Do it fast',
-          'EOY',
-          'High',
-          "Don't worry about the other project for now"
-        )
-      ]
-    )
+    new project("Work", [
+      new todoItem(
+        "Schedule Vacation",
+        "Schedule it for the long weekend",
+        "Today",
+        "Low",
+      ),
+      new todoItem(
+        "Finish ML project",
+        "Do it fast",
+        "EOY",
+        "High",
+        "Don't worry about the other project for now",
+      ),
+    ]),
   ];
 
-
-
-  return (projects)
+  return projects;
 }
-
 
 export function initializeUI(projects, current_project) {
   // initialize projects to sidebar, attach switch project function
@@ -56,4 +58,4 @@ export function initializeUI(projects, current_project) {
   }
   initializeAddProjectButton(projects, setCurrentProject);
   attachTodoListeners(current_project);
-} 
+}

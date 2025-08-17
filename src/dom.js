@@ -1,4 +1,4 @@
-import { todoItem, project } from "./todo.js"
+import { todoItem, project } from "./todo.js";
 
 // Store references to current event handlers to prevent duplicates
 let currentEventHandlers = {
@@ -13,14 +13,14 @@ let currentEventHandlers = {
 // attaches listeners to "+" button, and edit buttons
 // main event listener function
 export function attachTodoListeners(current_project) {
-  const form = document.getElementById('form_add_todo');
-  const title = document.getElementById('add_todo_title');
-  const description = document.getElementById('add_todo_description');
-  const duedate = document.getElementById('add_todo_duedate');
-  const priority = document.getElementById('add_todo_priority');
+  const form = document.getElementById("form_add_todo");
+  const title = document.getElementById("add_todo_title");
+  const description = document.getElementById("add_todo_description");
+  const duedate = document.getElementById("add_todo_duedate");
+  const priority = document.getElementById("add_todo_priority");
   const btnSubmit = document.getElementById("submit_todo");
   const btn = document.getElementById("btn_add_todo");
-  const title_p = document.getElementById('add_todo_title_p');
+  const title_p = document.getElementById("add_todo_title_p");
 
   // Remove existing listeners before adding new ones
   removeAllEventListeners();
@@ -28,7 +28,7 @@ export function attachTodoListeners(current_project) {
   // Handle "+" button click
   function handleClick() {
     title_p.style.display = "inline-block";
-    btn.style.display = 'none';
+    btn.style.display = "none";
     title.focus();
   }
 
@@ -38,7 +38,7 @@ export function attachTodoListeners(current_project) {
       event.preventDefault();
       btnSubmit.click();
       title_p.style.display = "none";
-      btn.style.display = 'inline-block';
+      btn.style.display = "inline-block";
     }
   }
 
@@ -47,12 +47,14 @@ export function attachTodoListeners(current_project) {
     event.preventDefault();
 
     // Add new todo item
-    current_project.addItem(new todoItem(
-      title.value,
-      description.value,
-      duedate.value,
-      priority.value
-    ));
+    current_project.addItem(
+      new todoItem(
+        title.value,
+        description.value,
+        duedate.value,
+        priority.value,
+      ),
+    );
 
     // Update the DOM and reattach all listeners
     addTodoContent(current_project);
@@ -72,29 +74,27 @@ export function attachTodoListeners(current_project) {
 
   current_project.items.forEach((todo) => {
     attachDeleteListener(current_project, todo);
-    attachStatusListener(todo)
+    attachStatusListener(todo);
   });
 }
 
 export function attachStatusListener(current_todo) {
-
   // apply listener to title div
-  const parentElement = document.getElementById('todo-item-' + current_todo.id);
-  const target = parentElement.querySelector('.todo-item-content .title');
+  const parentElement = document.getElementById("todo-item-" + current_todo.id);
+  const target = parentElement.querySelector(".todo-item-content .title");
   if (!target) return; // Guard against missing elements
 
   function handleStatus() {
-
     let old_class, new_class, new_status;
 
-    if (current_todo.status == 'done') {
-      old_class = 'status-done';
-      new_class = 'status-not-done';
-      new_status = 'not done';
-    } else if (current_todo.status == 'not done') {
-      old_class = 'status-not-done';
-      new_class = 'status-done';
-      new_status = 'done';
+    if (current_todo.status == "done") {
+      old_class = "status-done";
+      new_class = "status-not-done";
+      new_status = "not done";
+    } else if (current_todo.status == "not done") {
+      old_class = "status-not-done";
+      new_class = "status-done";
+      new_status = "done";
     }
 
     // update current todo
@@ -103,7 +103,6 @@ export function attachStatusListener(current_todo) {
     // apply dom updates
     target.classList.remove(old_class);
     target.classList.add(new_class);
-
   }
 
   // Store the handler reference
@@ -111,18 +110,19 @@ export function attachStatusListener(current_todo) {
 
   // Add the listener
   target.addEventListener("click", handleStatus);
-
 }
 
 export function attachDeleteListener(current_project, current_todo) {
-  const deleteBtn = document.getElementById('deleteBtn-' + current_todo.id);
-  const todoItem = document.getElementById('todo-item-' + current_todo.id);
+  const deleteBtn = document.getElementById("deleteBtn-" + current_todo.id);
+  const todoItem = document.getElementById("todo-item-" + current_todo.id);
 
   if (!deleteBtn) return; // Guard against missing elements
 
   function handleDelete() {
     todoItem.remove(); // deletes from dom
-    current_project.items = current_project.items.filter(todo => todo.id != current_todo.id); // delete from current_project
+    current_project.items = current_project.items.filter(
+      (todo) => todo.id != current_todo.id,
+    ); // delete from current_project
   }
 
   // Store the handler reference
@@ -131,7 +131,6 @@ export function attachDeleteListener(current_project, current_todo) {
   // Add the listener
   deleteBtn.addEventListener("click", handleDelete);
 }
-
 
 export function attachListenersToEditBtns(current_project) {
   // Clear existing edit handlers
@@ -142,22 +141,22 @@ export function attachListenersToEditBtns(current_project) {
   });
 }
 
-export function formInputsDisplay(display = 'none') {
-  const formInputs = document.querySelectorAll('.add_todo_input');
-  formInputs.forEach(element => {
+export function formInputsDisplay(display = "none") {
+  const formInputs = document.querySelectorAll(".add_todo_input");
+  formInputs.forEach((element) => {
     element.style.display = display;
   });
 }
 
 export function attachListenerToEditBtn(current_project, current_todo) {
-  const form = document.getElementById('form_add_todo');
-  const formTitle = document.getElementById('add_todo_title');
-  const formDescription = document.getElementById('add_todo_description');
-  const formDuedate = document.getElementById('add_todo_duedate');
-  const formPriority = document.getElementById('add_todo_priority');
+  const form = document.getElementById("form_add_todo");
+  const formTitle = document.getElementById("add_todo_title");
+  const formDescription = document.getElementById("add_todo_description");
+  const formDuedate = document.getElementById("add_todo_duedate");
+  const formPriority = document.getElementById("add_todo_priority");
   const btnAddToDo = document.getElementById("btn_add_todo");
   const btnSubmit = document.getElementById("submit_todo");
-  const editBtn = document.getElementById('editBtn-' + current_todo.id);
+  const editBtn = document.getElementById("editBtn-" + current_todo.id);
 
   if (!editBtn) return; // Guard against missing elements
 
@@ -169,13 +168,13 @@ export function attachListenerToEditBtn(current_project, current_todo) {
     formPriority.value = current_todo.priority;
 
     // Switch to update mode
-    btnSubmit.textContent = 'Update';
-    btnAddToDo.style.display = 'none';
-    formInputsDisplay('flex');
+    btnSubmit.textContent = "Update";
+    btnAddToDo.style.display = "none";
+    formInputsDisplay("flex");
 
     // Remove current form submit handler
     if (currentEventHandlers.formSubmit) {
-      form.removeEventListener('submit', currentEventHandlers.formSubmit);
+      form.removeEventListener("submit", currentEventHandlers.formSubmit);
     }
 
     // Create update handler
@@ -193,7 +192,7 @@ export function attachListenerToEditBtn(current_project, current_todo) {
     }
 
     // Add update handler
-    form.addEventListener('submit', submitHandler_update);
+    form.addEventListener("submit", submitHandler_update);
 
     // Store reference for cleanup
     currentEventHandlers.formSubmit = submitHandler_update;
@@ -207,22 +206,22 @@ export function attachListenerToEditBtn(current_project, current_todo) {
 }
 
 function resetToAddMode(current_project) {
-  const form = document.getElementById('form_add_todo');
+  const form = document.getElementById("form_add_todo");
   const btnAddToDo = document.getElementById("btn_add_todo");
   const btnSubmit = document.getElementById("submit_todo");
 
   // Hide form and show add button
-  formInputsDisplay('none');
-  btnAddToDo.style.display = 'flex';
-  btnSubmit.textContent = 'Add';
+  formInputsDisplay("none");
+  btnAddToDo.style.display = "flex";
+  btnSubmit.textContent = "Add";
 
   // Refresh the entire UI and reattach all listeners
   addTodoContent(current_project);
 }
 
 function removeAllEventListeners() {
-  const form = document.getElementById('form_add_todo');
-  const title = document.getElementById('add_todo_title');
+  const form = document.getElementById("form_add_todo");
+  const title = document.getElementById("add_todo_title");
   const btn = document.getElementById("btn_add_todo");
 
   // Remove main listeners if they exist
@@ -238,7 +237,7 @@ function removeAllEventListeners() {
 
   // Remove edit button listeners
   currentEventHandlers.editHandlers.forEach((handler, todoId) => {
-    const editBtn = document.getElementById('editBtn-' + todoId);
+    const editBtn = document.getElementById("editBtn-" + todoId);
     if (editBtn) {
       editBtn.removeEventListener("click", handler);
     }
@@ -246,7 +245,7 @@ function removeAllEventListeners() {
 
   // Remove delete button listeners
   currentEventHandlers.deleteHandlers.forEach((handler, todoId) => {
-    const deleteBtn = document.getElementById('deleteBtn-' + todoId);
+    const deleteBtn = document.getElementById("deleteBtn-" + todoId);
     if (deleteBtn) {
       deleteBtn.removeEventListener("click", handler);
     }
@@ -254,26 +253,22 @@ function removeAllEventListeners() {
 
   // Remove status button listeners
   currentEventHandlers.statusHandlers.forEach((handler, todoId) => {
+    const parentElement = document.getElementById("todo-item-" + todoId);
 
-    const parentElement = document.getElementById('todo-item-' + todoId);
-    
     if (parentElement) {
-      const status = parentElement.querySelector('.todo-item-content .title');
-          if (status) {
-      status.removeEventListener("click", handler);
+      const status = parentElement.querySelector(".todo-item-content .title");
+      if (status) {
+        status.removeEventListener("click", handler);
+      }
     }
-    }
-
-
   });
-
 }
 
 // Keep your existing functions unchanged
 export function addProjectsToSidebar(projects, onSelect) {
   projects.map((currentValue, index, array) => {
-    addProjectToSidebar(currentValue, onSelect)
-  })
+    addProjectToSidebar(currentValue, onSelect);
+  });
 }
 
 export function addProjectToSidebar(project, onSelect) {
@@ -283,17 +278,17 @@ export function addProjectToSidebar(project, onSelect) {
   child.id = project.title;
 
   child.addEventListener("click", function () {
-    onSelect(project)
+    onSelect(project);
   });
 
   parent.appendChild(child);
 }
 
 export function addTodoContent(current_project) {
-  clearTodoUI()
+  clearTodoUI();
   setTitleOfMain(current_project);
   current_project.items.map(addTodoUI);
-  formInputsDisplay('none');
+  formInputsDisplay("none");
 
   // Reattach listeners after DOM update
   attachTodoListeners(current_project);
@@ -305,58 +300,57 @@ function setTitleOfMain(project) {
 }
 
 function clearTodoUI() {
-  document.querySelector(".lists").innerHTML = '';
+  document.querySelector(".lists").innerHTML = "";
 }
 
 function addTodoUI(todo) {
   const parent = document.querySelector(".lists");
-  const child = document.createElement('div');
-  child.className = 'todo-item';
-  child.id = 'todo-item-' + todo.id;
+  const child = document.createElement("div");
+  child.className = "todo-item";
+  child.id = "todo-item-" + todo.id;
 
-
-  const child2 = document.createElement('div');
-  child2.className = 'todo-item-content';
+  const child2 = document.createElement("div");
+  child2.className = "todo-item-content";
 
   const title = document.createElement("div");
   title.textContent = todo.title;
-  title.classList.add('title', 'status');
+  title.classList.add("title", "status");
 
   // apply status class to title div
-  if (todo.status == 'done') {
-    title.classList.remove('status-not-done');
-    title.classList.add('status-done');
-  } else if (todo.status == 'not done') {
-    title.classList.remove('status-done');
-    title.classList.add('status-not-done');
+  if (todo.status == "done") {
+    title.classList.remove("status-not-done");
+    title.classList.add("status-done");
+  } else if (todo.status == "not done") {
+    title.classList.remove("status-done");
+    title.classList.add("status-not-done");
   }
 
-  const belowTitleDiv = document.createElement('div');
-  belowTitleDiv.classList.add('below-title');
+  const belowTitleDiv = document.createElement("div");
+  belowTitleDiv.classList.add("below-title");
 
-  const duedate = document.createElement('div');
-  duedate.textContent = ' ' + todo.dueDate;
-  duedate.classList.add('duedate');
+  const duedate = document.createElement("div");
+  duedate.textContent = " " + todo.dueDate;
+  duedate.classList.add("duedate");
 
-  const priority = document.createElement('div');
-  priority.textContent = ' ' + todo.priority;
-  priority.classList.add('priority');
-  priority.classList.add('priority-' + todo.priority.toLowerCase());
+  const priority = document.createElement("div");
+  priority.textContent = " " + todo.priority;
+  priority.classList.add("priority");
+  priority.classList.add("priority-" + todo.priority.toLowerCase());
 
-  [duedate, priority].forEach(item => belowTitleDiv.appendChild(item));
-  [title, belowTitleDiv].forEach(item => child2.appendChild(item));
+  [duedate, priority].forEach((item) => belowTitleDiv.appendChild(item));
+  [title, belowTitleDiv].forEach((item) => child2.appendChild(item));
 
-  const child3 = document.createElement('div');
-  child3.className = 'todo-item-controls';
+  const child3 = document.createElement("div");
+  child3.className = "todo-item-controls";
 
   const editBtn = document.createElement("button");
-  editBtn.classList.add('edit');
-  editBtn.id = 'editBtn-' + todo.id;
+  editBtn.classList.add("edit");
+  editBtn.id = "editBtn-" + todo.id;
   editBtn.innerHTML = '<i class="bi-pencil-square"></i>';
 
   const deleteBtn = document.createElement("button");
-  deleteBtn.classList.add('delete');
-  deleteBtn.id = 'deleteBtn-' + todo.id;
+  deleteBtn.classList.add("delete");
+  deleteBtn.id = "deleteBtn-" + todo.id;
   deleteBtn.innerHTML = '<i class="bi-trash"></i>';
 
   child3.appendChild(editBtn);
@@ -373,27 +367,27 @@ export function initializeAddProjectButton(projects, switchProjectFunc) {
   const textInput = document.getElementById("add_project_text_input");
 
   btnFocus.addEventListener("click", function () {
-    btnFocus.style.display = 'none';
-    textInput.style.display = 'inline-block';
-    btnAddProject.style.display = 'inline-block';
+    btnFocus.style.display = "none";
+    textInput.style.display = "inline-block";
+    btnAddProject.style.display = "inline-block";
     textInput.focus();
   });
 
   btnAddProject.addEventListener("click", function () {
-    let newProject = new project(textInput.value, [])
-    projects.push(newProject)
+    let newProject = new project(textInput.value, []);
+    projects.push(newProject);
 
     switchProjectFunc(newProject);
 
     addProjectToSidebar(newProject, (clicked_project) => {
       switchProjectFunc(clicked_project);
-      addTodoContent(clicked_project)
+      addTodoContent(clicked_project);
     });
-    addTodoContent(newProject)
+    addTodoContent(newProject);
 
-    btnFocus.style.display = 'inline-block';
-    textInput.style.display = 'none';
-    btnAddProject.style.display = 'none';
+    btnFocus.style.display = "inline-block";
+    textInput.style.display = "none";
+    btnAddProject.style.display = "none";
   });
 
   textInput.addEventListener("keypress", function (event) {

@@ -1,10 +1,10 @@
 @import url(reset.css);
-@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
 
 html,
 body,
 html * {
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
 }
 
 .main {
@@ -28,14 +28,14 @@ html * {
   padding: 8px;
 }
 
-.sidebar>h1 {
+.sidebar > h1 {
   text-align: left;
   margin: 2px 2px;
   padding: 2px 8px;
   margin-bottom: 25px;
 }
 
-.content>h1 {
+.content > h1 {
   text-align: center;
   padding: 25px;
 }
@@ -54,11 +54,11 @@ html * {
   /* Allows items to wrap to the next row if they exceed container width */
 }
 
-.projects>* {
+.projects > * {
   text-align: left;
 }
 
-.projects>*:hover {
+.projects > *:hover {
   cursor: pointer;
 }
 
@@ -86,7 +86,6 @@ html * {
   background: rgb(210, 247, 210);
 }
 
-
 /* make the form inputs stretch to fill the width of it's parent div */
 form {
   width: 100%;
@@ -103,7 +102,7 @@ select {
   box-sizing: border-box;
 }
 
-.lists>* {
+.lists > * {
   margin: 2px;
   padding: 2px;
 }
@@ -161,7 +160,7 @@ button {
   gap: 5px;
 }
 
-.below-title>* {
+.below-title > * {
   align-self: flex-end;
   /* Aligns this specific item to the bottom */
   padding-top: 0px;
@@ -190,7 +189,6 @@ button {
   background: rgb(249, 84, 84);
   border-radius: 1rem;
   padding: 0px 8px;
-
 }
 
 .priority-medium {
@@ -199,13 +197,11 @@ button {
   padding: 0px 8px;
 }
 
-
 .priority-low {
   background: rgb(188, 255, 198);
   border-radius: 1rem;
   padding: 0px 8px;
 }
-
 
 .edit:hover {
   background: rgb(113, 201, 230);
