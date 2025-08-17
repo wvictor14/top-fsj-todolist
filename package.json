@@ -8,7 +8,8 @@
     "build": "webpack",
     "dev": "webpack serve",
     "deploy": "sh scripts/deploy.sh",
-    "lint": "npx eslint src"
+    "lint": "npx eslint src",
+    "format": "npx prettier ."
   },
   "keywords": [],
   "author": "",
